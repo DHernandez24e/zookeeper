@@ -126,6 +126,17 @@
         "hungry"
       ],
       "id": "12"
+    },
+    {
+      "name": "Jeffery",
+      "species": "giraffe",
+      "diet": "herbivore",
+      "personalityTraits": [
+        "hungry",
+        "loving",
+        "goofy"
+      ],
+      "id": "13"
     }
   ]
 }

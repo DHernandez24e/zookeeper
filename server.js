@@ -9,6 +9,8 @@ const app = express();
 app.use(express.urlencoded({ extended: true }));
 //parse incoming JSON data
 app.use(express.json());
+//sets routes for front-end assets
+app.use(express.static('public'));
 
 function filterByQuery(query, animalsArray) {
     let personalityTraitsArray = [];
@@ -72,7 +74,7 @@ function validateAnimal(animal) {
     if (!animal.species || typeof animal.name !== 'string') {
         return false;
     }
-    if (!animal.diet || typeof anime.diet !== 'string') {
+    if (!animal.diet || typeof animal.diet !== 'string') {
         return false;
     }
     if (!animal.personalityTraits || !Array.isArray(animal.personalityTraits)) {
@@ -97,6 +99,18 @@ app.get('/api/animals/:id', (req, res) => {
         res.send(404);
     }
      
+});
+
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/index.html'));
+});
+
+app.get('/animals', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/animals.html'));
+});
+
+app.get('/zookeepers', (req, res) => {
+    res.sendFile(path.join(__dirname, './public/zookeepers.html'));
 });
 
 app.post('/api/animals', (req, res) => {
